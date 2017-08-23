@@ -18,6 +18,11 @@ public class MainPresenter {
         this.mModel = model;
     }
 
+    public void onCreate() {
+        mView.setContentView();
+        mView.initRecyclerView();
+    }
+
     public void onSaveButtonClick(String note) {
         if (note.isEmpty()) {
             mView.showEmptyToast(mModel.getEmptyMsg());

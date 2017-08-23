@@ -9,9 +9,13 @@ import java.util.ArrayList;
 
 public interface MainView {
 
+    void setContentView();
+
     void updateRecyclerView(ArrayList<String> noteList);
 
     void clearEditText();
 
     void showEmptyToast(String emptyMsg);
+
+    void initRecyclerView();
 }
