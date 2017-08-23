@@ -28,4 +28,9 @@ public class MainPresenter {
         mView.clearEditText();
         mView.updateRecyclerView(mModel.getNoteList());
     }
+
+    public void onDeleteButtonClick(int index) {
+        mModel.removeNoteFromList(index);
+        mView.updateRecyclerView(mModel.getNoteList());
+    }
 }

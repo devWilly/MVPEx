@@ -20,4 +20,8 @@ public class MainModel {
     public String getEmptyMsg() {
         return null;
     }
+
+    public void removeNoteFromList(int index) {
+
+    }
 }
