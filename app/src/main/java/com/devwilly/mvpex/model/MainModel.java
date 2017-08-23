@@ -9,19 +9,21 @@ import java.util.ArrayList;
 
 public class MainModel {
 
-    public void addToNoteList(String note) {
+    private ArrayList<String> mNoteList = new ArrayList<>();
 
+    public void addToNoteList(String note) {
+        mNoteList.add(0, note);
     }
 
     public ArrayList<String> getNoteList() {
-        return null;
+        return mNoteList;
     }
 
     public String getEmptyMsg() {
-        return null;
+        return "Note list is empty, please enter note!!";
     }
 
     public void removeNoteFromList(int index) {
-
+        mNoteList.remove(index);
     }
 }
