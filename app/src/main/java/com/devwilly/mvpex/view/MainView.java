@@ -11,11 +11,11 @@ public interface MainView {
 
     void setContentView();
 
+    void initRecyclerView();
+
     void updateRecyclerView(ArrayList<String> noteList);
 
     void clearEditText();
 
     void showEmptyToast(String emptyMsg);
-
-    void initRecyclerView();
 }
