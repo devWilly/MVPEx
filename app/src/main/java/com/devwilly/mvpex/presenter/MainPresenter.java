@@ -17,4 +17,15 @@ public class MainPresenter {
         this.mView = view;
         this.mModel = model;
     }
+
+    public void onSaveButtonClick(String note) {
+        if (note.isEmpty()) {
+            mView.showEmptyToast(mModel.getEmptyMsg());
+            return;
+        }
+
+        mModel.addToNoteList(note);
+        mView.clearEditText();
+        mView.updateRecyclerView(mModel.getNoteList());
+    }
 }
