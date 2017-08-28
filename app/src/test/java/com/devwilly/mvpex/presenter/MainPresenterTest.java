@@ -1,9 +1,13 @@
 package com.devwilly.mvpex.presenter;
 
+import com.devwilly.mvpex.model.MainModel;
+import com.devwilly.mvpex.view.MainView;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 
 /**
@@ -11,21 +15,57 @@ import static org.junit.Assert.*;
  */
 public class MainPresenterTest {
 
+    @Mock
+    private MainView mView;
+
+    @Mock
+    private MainModel mModel;
+
+    private MainPresenter mPresenter;
+
     @Before
     public void setUp() throws Exception {
-
+        mView = mock(MainView.class);
+        mModel = mock(MainModel.class);
+        mPresenter = new MainPresenter(mView, mModel);
     }
 
     @Test
-    public void onCreate() throws Exception {
+    public void onCreateTest() throws Exception {
+        mPresenter.onCreate();
+
+        verify(mView).setContentView();
+        verify(mView).initRecyclerView();
     }
 
     @Test
-    public void onSaveButtonClick() throws Exception {
+    public void onSaveButtonClick_noDataTest() throws Exception {
+        String note = "";
+        mPresenter.onSaveButtonClick(note);
+
+        verify(mView).showEmptyToast(mModel.getEmptyMsg());
+    }
+
+    @Test
+    public void onSaveButtonClick_withDataTest() throws Exception {
+        String note = "test";
+
+        mPresenter.onSaveButtonClick(note);
+
+        verify(mModel).addToNoteList(note);
+        verify(mView).clearEditText();
+        verify(mView).updateRecyclerView(mModel.getNoteList());
+
     }
 
     @Test
     public void onDeleteButtonClick() throws Exception {
+        int index = 0;
+
+        mPresenter.onDeleteButtonClick(index);
+
+        verify(mModel).removeNoteFromList(index);
+        verify(mView).updateRecyclerView(mModel.getNoteList());
     }
 
 }
