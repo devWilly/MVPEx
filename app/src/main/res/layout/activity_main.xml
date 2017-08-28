@@ -16,18 +16,22 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="input note"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/note_save_button" />
 
     <Button
         android:id="@+id/note_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Save"
         app:layout_constraintStart_toEndOf="@+id/input_edit_text"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/save_sharepreference_btn" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -39,4 +43,16 @@
         android:layout_marginStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="0dp" />
+
+    <Button
+        android:id="@+id/save_sharepreference_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SaveDB"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="327dp"
+        app:layout_constraintStart_toEndOf="@+id/note_save_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

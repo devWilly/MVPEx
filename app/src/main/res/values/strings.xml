@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVPEx</string>
+    <string name="empty_message">Note list is empty, please enter note!!</string>
+    <string name="save_sharedpreference_success_message">save note in the sharedpreference, list size is %s</string>
 </resources>

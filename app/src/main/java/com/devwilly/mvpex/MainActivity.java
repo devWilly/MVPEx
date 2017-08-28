@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements MainView, NoteAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPresenter = new MainPresenter(MainActivity.this, new MainModel());
+        DataManager dataManager = new DataManager(getBaseContext());
+        mPresenter = new MainPresenter(MainActivity.this, new MainModel(dataManager));
         mPresenter.onCreate();
     }
 
@@ -34,12 +35,21 @@ public class MainActivity extends AppCompatActivity implements MainView, NoteAda
     public void setContentView() {
         setContentView(R.layout.activity_main);
         mEditText = findViewById(R.id.input_edit_text);
+
         findViewById(R.id.note_save_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mPresenter.onSaveButtonClick(mEditText.getText().toString());
             }
         });
+
+        findViewById(R.id.save_sharepreference_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPresenter.onSaveToSharePreference();
+            }
+        });
+
     }
 
     @Override
@@ -64,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements MainView, NoteAda
     @Override
     public void showEmptyToast(String emptyMsg) {
         Toast.makeText(MainActivity.this, emptyMsg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showSaveSharedPreferenceSuccessMsg(String saveSuccessMsg) {
+        Toast.makeText(MainActivity.this, saveSuccessMsg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

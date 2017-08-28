@@ -38,4 +38,13 @@ public class MainPresenter {
         mModel.removeNoteFromList(index);
         mView.updateRecyclerView(mModel.getNoteList());
     }
+
+    public void onSaveToSharePreference() {
+        if (mModel.getNoteList().isEmpty()) {
+            return;
+        }
+
+        mModel.saveToSharePreference();
+        mView.showSaveSharedPreferenceSuccessMsg(mModel.getSaveSuccessMsg());
+    }
 }

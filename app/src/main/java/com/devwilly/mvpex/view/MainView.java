@@ -18,4 +18,6 @@ public interface MainView {
     void clearEditText();
 
     void showEmptyToast(String emptyMsg);
+
+    void showSaveSharedPreferenceSuccessMsg(String saveSuccessMsg);
 }
