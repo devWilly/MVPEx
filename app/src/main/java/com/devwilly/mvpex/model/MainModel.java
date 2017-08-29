@@ -40,4 +40,12 @@ public class MainModel {
     public String getSaveSuccessMsg() {
         return mDataManager.getSaveSuccessMsg();
     }
+
+    public void setDataManager(DataManager dataManager) {
+        this.mDataManager = dataManager;
+    }
+
+    public boolean isEmptyNoteList() {
+        return getNoteList().isEmpty();
+    }
 }

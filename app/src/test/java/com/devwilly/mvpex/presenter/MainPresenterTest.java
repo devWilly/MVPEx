@@ -1,11 +1,14 @@
 package com.devwilly.mvpex.presenter;
 
+import com.devwilly.mvpex.DataManager;
 import com.devwilly.mvpex.model.MainModel;
 import com.devwilly.mvpex.view.MainView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+
+import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
@@ -68,4 +71,20 @@ public class MainPresenterTest {
         verify(mView).updateRecyclerView(mModel.getNoteList());
     }
 
+    @Test
+    public void onSaveToSharePreference_withDataTest() throws Exception {
+        DataManager dataManager = mock(DataManager.class);
+        mModel.setDataManager(dataManager);
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add(0, "first item");
+
+        mPresenter.onSaveToSharePreference();
+
+        when(dataManager.getNoteList()).thenReturn(list);
+
+        verify(mModel, times(1)).saveToSharePreference();
+        verify(mView, times(1)).showSaveSharedPreferenceSuccessMsg(mModel.getSaveSuccessMsg());
+
+    }
 }

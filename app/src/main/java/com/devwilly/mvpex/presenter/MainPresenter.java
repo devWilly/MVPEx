@@ -40,7 +40,8 @@ public class MainPresenter {
     }
 
     public void onSaveToSharePreference() {
-        if (mModel.getNoteList().isEmpty()) {
+
+        if (mModel.isEmptyNoteList()) {
             return;
         }
 
